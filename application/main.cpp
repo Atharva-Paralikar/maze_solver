@@ -7,4 +7,6 @@
 int main(int argc, char *argv[])
 {
     rwa2::Robot robot;
+    Simulator::turnRight();
+    robot.check_walls();
 }

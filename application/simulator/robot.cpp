@@ -1,16 +1,22 @@
-#include "cell.h"
 #include "simulator.h"
 #include "robot.h"
 #include <array>
 #include <vector>
 
-const int NORTH {0};
-const int EAST {1};
-const int SOUTH {2};
-const int WEST {3};
+void rwa2 ::Robot::robot_init(){
+    for(int x = 0; x < maze_width ; x++){
+        for(int y = 0; y < maze_height ; y++){
+            maze.at(x).at(y).set_wall(NORTH,(y == maze_height - 1));
+            maze.at(x).at(y).set_wall(EAST,(x == maze_width - 1));
+            maze.at(x).at(y).set_wall(SOUTH,(y == 0));
+            maze.at(x).at(y).set_wall(WEST,(x == 0));
+        }
+    }
+}
 
 void rwa2::Robot::move_forward(){
     Simulator::moveForward();
+    robot_y ++;
 }
 
 void rwa2::Robot::turn_left(){

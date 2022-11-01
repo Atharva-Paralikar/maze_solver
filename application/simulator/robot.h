@@ -5,7 +5,6 @@
 #include <array>
 #include <vector>
 
-
 namespace rwa2
 {
     class Robot{
@@ -14,16 +13,12 @@ namespace rwa2
          * @brief Construct a new Robot object
          * 
          */
-        Robot(): robot_x{0}, robot_y{0}, robot_dir{NORTH}{
-            for(int x = 0; x < maze_width ; x++){
-                for(int y = 0; y < maze_height ; y++){
-                    maze.at(x).at(y).set_wall(NORTH,(y == maze_height - 1));
-                    maze.at(x).at(y).set_wall(EAST,(x == maze_width - 1));
-                    maze.at(x).at(y).set_wall(SOUTH,(y == 0));
-                    maze.at(x).at(y).set_wall(WEST,(x == 0));
-                }
-            }
+        Robot(){
+            robot_x = 0;
+            robot_y = 0;
+            robot_dir = NORTH;
         }
+        void robot_init();
         void move_forward();
         void turn_left();
         void turn_right();
