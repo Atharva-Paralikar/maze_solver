@@ -1,6 +1,16 @@
 #ifndef __ROBOT_H__
 #define __ROBOT_H__
 
+/**
+ * @file robot.h
+ * @author Atharva Paralikar (atharvap@umd.edu)
+ * @brief Functions to Control Robot
+ * @version 0.1
+ * @date 2022-11-03
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include "cell.h"
 #include <array>
 #include <vector>

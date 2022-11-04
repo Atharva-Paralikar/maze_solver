@@ -2,6 +2,7 @@
 #include "robot.h"
 #include <array>
 #include <vector>
+#include <iostream>
 
 void rwa2 ::Robot::robot_init(){
     for(int x = 0; x < maze_width ; x++){

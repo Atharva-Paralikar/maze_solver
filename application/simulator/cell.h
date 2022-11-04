@@ -1,6 +1,16 @@
 #ifndef __CELL_H__
 #define __CELL_H_
 
+/**
+ * @file cell.h
+ * @author Atharva Paralikar (atharvap@umd.edu)
+ * @brief Header file containing the cell class
+ * @version 0.1
+ * @date 2022-11-03
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <array>
 
 const int NORTH {0};
@@ -22,8 +32,9 @@ namespace rwa2{
          * 
          */
         Cell(){
-            for (int i = 0; i <= 4; i++){
-                cell_walls[i] = false;
+            for (int i = 0; i < 4; i++){
+                set_wall(i,false);
+                // cell_walls[i] = false;
             }
         }
 
