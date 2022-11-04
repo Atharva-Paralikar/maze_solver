@@ -29,10 +29,13 @@ namespace rwa2
             robot_dir = NORTH;
         }
         void robot_init();
+        std::vector<int> get_curr_loc();
         void move_forward();
         void turn_left();
         void turn_right();
         void check_walls();
+        int move_robot(bool left_following);
+        void search_maze(int goal_x,int goal_y);
         
         private:
         const static int maze_height{16};
