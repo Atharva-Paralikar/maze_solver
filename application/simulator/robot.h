@@ -20,7 +20,7 @@ namespace rwa2
     class Robot{
         public:
         /**
-         * @brief Construct a new Robot object
+         * @brief Constructs a new Robot object
          * 
          */
         Robot(){
@@ -28,21 +28,96 @@ namespace rwa2
             robot_y = 0;
             robot_dir = NORTH;
         }
+        /**
+         * @brief Sets walls around the perimeter
+         * 
+         */
         void robot_init();
+
+        /**
+         * @brief Get the current location of the robot in the maze
+         * 
+         * @return std::vector<int> returns a vector containing the robot coords
+         */
         std::vector<int> get_curr_loc();
+
+        /**
+         * @brief Moves the robot forward in the simulator
+         * 
+         */
         void move_forward();
+
+        /**
+         * @brief Turns the robot to left in the simulator
+         * 
+         */
         void turn_left();
+
+        /**
+         * @brief Turns the robot to right in the simulator
+         * 
+         */
         void turn_right();
+
+        /**
+         * @brief Checks the surrounding walls of the robot
+         * 
+         */
         void check_walls();
+
+        /**
+         * @brief algorithm to move the robot
+         * 
+         * @param left_following true for left wall following 
+         *                       false for right wall following
+         * @return int 
+         */
         int move_robot(bool left_following);
+
+        /**
+         * @brief keep track if the robot reached the goal
+         * 
+         * @param goal_x goal x-coordinate
+         * @param goal_y goal y-coordinate
+         */
         void search_maze(int goal_x,int goal_y);
         
         private:
+
+        /**
+         * @brief height of the maze
+         * 
+         */
         const static int maze_height{16};
+
+        /**
+         * @brief width of the maze
+         * 
+         */
         const static int maze_width{16};
+
+        /**
+         * @brief robot x-coordinate
+         * 
+         */
         int robot_x;
+
+        /**
+         * @brief robot y-coordinate
+         * 
+         */
         int robot_y;
+
+        /**
+         * @brief robot facing direction
+         * 
+         */
         int robot_dir;
+
+        /**
+         * @brief array to store the cells in the maze
+         * 
+         */
         std::array<std::array<rwa2::Cell,maze_width>,maze_height> maze;
     };
 } // namespace rwa2

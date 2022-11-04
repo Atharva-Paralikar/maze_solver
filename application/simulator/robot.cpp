@@ -11,6 +11,12 @@ void rwa2 ::Robot::robot_init(){
             maze.at(x).at(y).set_wall(EAST,(x == maze_width - 1));
             maze.at(x).at(y).set_wall(SOUTH,(y == 0));
             maze.at(x).at(y).set_wall(WEST,(x == 0));
+            std::array<char,4> directions{'n','e','s','w'};
+            for (int i = 0; i < 4 ; i++){
+                if (maze.at(robot_x).at(robot_y).is_wall(i)){
+                    Simulator::setWall(robot_x,robot_y,directions.at(i));
+                }
+            }
         }
     }
 }
