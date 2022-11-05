@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
+#include <memory>
 
 #include "simulator/simulator.h"
 #include "simulator/robot.h"
 
 int main(int argc , char *argv[]){
-    std::cerr<<argc<<std::endl;
     std::string args;
     if (argc == 1){
         args = "left";
@@ -15,7 +15,7 @@ int main(int argc , char *argv[]){
     }
     std::cerr << "The robot will follow the " << args <<
                                          " following algorithm" <<std::endl;
-    rwa2::Robot robot;
-    robot.robot_init();
-    robot.search_maze(args);
+    std::unique_ptr<rwa2::Robot> robot(new rwa2::Robot());
+    robot->robot_init();
+    robot->search_maze(args);
 }
