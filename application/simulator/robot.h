@@ -15,6 +15,9 @@
 #include <array>
 #include <vector>
 
+const bool LEFT{true};
+const bool RIGHT{false};
+
 namespace rwa2
 {
     class Robot{
@@ -75,12 +78,10 @@ namespace rwa2
         int move_robot(bool left_following);
 
         /**
-         * @brief keep track if the robot reached the goal
+         * @brief Function for the Robot to search the maze
          * 
-         * @param goal_x goal x-coordinate
-         * @param goal_y goal y-coordinate
          */
-        void search_maze();
+        void search_maze(std::string argument);
         
         private:
 
@@ -120,6 +121,11 @@ namespace rwa2
          */
         std::array<std::array<rwa2::Cell,maze_width>,maze_height> maze;
 
+        /**
+         * @brief Function to generate a random goal on the perimeter of the maze
+         * 
+         * @return std::pair<int,int> return the goal coordinates as a pair
+         */
         std::pair<int,int> generate_goal();
     };
 } // namespace rwa2

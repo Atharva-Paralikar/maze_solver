@@ -3,6 +3,7 @@
 #include <array>
 #include <vector>
 #include <iostream>
+#include <cstring>
 
 std::pair<int,int> rwa2::Robot::generate_goal(){
     std::pair<int,int> goal(0,0);
@@ -85,11 +86,20 @@ std::vector<int> rwa2::Robot::get_curr_loc(){
     std::cerr<< "curent location"<<robot_x<<" "<<robot_y<<std::endl;
     return coords;
 }
-void rwa2::Robot::search_maze(){
+void rwa2::Robot::search_maze(std::string argument){
     auto goal = generate_goal();
     auto curr_location = get_curr_loc();
+    std::string left = "left";
+    std::string right = "right";
     while (!((curr_location[0] == goal.first) && (curr_location[1] == goal.second))){
-        move_robot(true);
+        if (argument.compare(right) == 0){
+            std::cerr<< "right" << std::endl;
+            move_robot(RIGHT);
+        }
+        else{
+            std::cerr<< "left" << std::endl;
+            move_robot(LEFT);
+        }
         curr_location = get_curr_loc();
     }
 }
@@ -218,7 +228,7 @@ int rwa2::Robot::move_robot(bool left_following = true){
             }
         }
     }
-    // else{
+    else{
     //     if (robot_dir == NORTH){
 
     //     }
@@ -231,5 +241,5 @@ int rwa2::Robot::move_robot(bool left_following = true){
     //     if(robot_dir == WEST){
             
     //     }
-    // }
+    }
 }
