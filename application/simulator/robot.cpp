@@ -83,7 +83,7 @@ void rwa2::Robot::check_walls(){
 }
 std::vector<int> rwa2::Robot::get_curr_loc(){
     std::vector<int> coords = {robot_x,robot_y};
-    std::cerr<< "curent location"<<robot_x<<" "<<robot_y<<std::endl;
+    std::cerr<< "Current location: (" << robot_x << " , " << robot_y << ")" <<std::endl;
     return coords;
 }
 void rwa2::Robot::search_maze(std::string argument){
@@ -93,15 +93,16 @@ void rwa2::Robot::search_maze(std::string argument){
     std::string right = "right";
     while (!((curr_location[0] == goal.first) && (curr_location[1] == goal.second))){
         if (argument.compare(right) == 0){
-            std::cerr<< "right" << std::endl;
+            // std::cerr<< "right" << std::endl;
             move_robot(RIGHT);
         }
         else{
-            std::cerr<< "left" << std::endl;
+            // std::cerr<< "left" << std::endl;
             move_robot(LEFT);
         }
         curr_location = get_curr_loc();
     }
+    std::cerr << "----- GOAL REACHED -----" << std::endl;
 }
 
 int rwa2::Robot::move_robot(bool left_following = true){
@@ -228,18 +229,127 @@ int rwa2::Robot::move_robot(bool left_following = true){
             }
         }
     }
-    else{
-    //     if (robot_dir == NORTH){
-
-    //     }
-    //     if(robot_dir == EAST){
-
-    //     }
-    //     if (robot_dir == SOUTH){
-
-    //     }
-    //     if(robot_dir == WEST){
-            
-    //     }
+    else{ 
+        if (robot_dir == NORTH){
+                      
+            if(!maze.at(robot_x).at(robot_y).is_wall(EAST)){
+                turn_right();
+                move_forward();
+                robot_x ++;
+                robot_dir = EAST;
+                return 0;
+            }
+            else if(!maze.at(robot_x).at(robot_y).is_wall(NORTH)){
+                move_forward();
+                robot_y ++;
+                robot_dir = NORTH;
+                return 0;
+            }
+            else if(!maze.at(robot_x).at(robot_y).is_wall(WEST)){
+                turn_left();
+                move_forward();
+                robot_x --;
+                robot_dir = WEST;
+                return 0;
+            }
+            else{
+                turn_right();
+                turn_right();
+                move_forward();
+                robot_y --;
+                robot_dir = SOUTH;
+                return 0;
+            }
+        }
+        if(robot_dir == EAST){
+            if(!maze.at(robot_x).at(robot_y).is_wall(SOUTH)){
+                turn_right();
+                move_forward();
+                robot_y --;
+                robot_dir = SOUTH;
+                return 0;
+            }            
+            else if(!maze.at(robot_x).at(robot_y).is_wall(EAST)){
+                move_forward();
+                robot_x ++;
+                robot_dir = EAST;
+                return 0;
+            }
+            else if(!maze.at(robot_x).at(robot_y).is_wall(NORTH)){
+                turn_left();
+                move_forward();
+                robot_y ++;
+                robot_dir = NORTH;
+                return 0;
+            }
+            else{
+                turn_right();
+                turn_right();
+                move_forward();
+                robot_x --;
+                robot_dir = WEST;
+                return 0;
+            }
+        }
+        if (robot_dir == SOUTH){
+            if(!maze.at(robot_x).at(robot_y).is_wall(WEST)){
+                turn_right();
+                move_forward();
+                robot_x --;
+                robot_dir = WEST;
+                return 0;
+            }
+            else if(!maze.at(robot_x).at(robot_y).is_wall(SOUTH)){
+                move_forward();
+                robot_y --;
+                robot_dir = SOUTH;
+                return 0;
+            }
+            else if(!maze.at(robot_x).at(robot_y).is_wall(EAST)){
+                turn_left();
+                move_forward();
+                robot_x ++;
+                robot_dir = EAST;
+                return 0;
+            }
+            else{
+                turn_right();
+                turn_right();
+                move_forward();
+                robot_y ++;
+                robot_dir = NORTH;
+                return 0;
+            }
+        }
+        if(robot_dir == WEST){
+            if(!maze.at(robot_x).at(robot_y).is_wall(NORTH)){
+                turn_right();
+                move_forward();
+                robot_y ++;
+                robot_dir = NORTH;
+                return 0;
+            }
+            else if(!maze.at(robot_x).at(robot_y).is_wall(WEST)){
+                move_forward();
+                robot_x --;
+                robot_dir = WEST;
+                return 0;
+            }
+            else if(!maze.at(robot_x).at(robot_y).is_wall(SOUTH)){
+                turn_left();
+                move_forward();
+                robot_y --;
+                robot_dir = SOUTH;
+                return 0;
+            }
+            else{
+                turn_right();
+                turn_right();
+                move_forward();
+                robot_x ++;
+                robot_dir = EAST;
+                return 0;
+            }
+        }
     }
 }
