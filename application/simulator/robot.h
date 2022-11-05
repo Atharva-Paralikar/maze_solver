@@ -38,11 +38,11 @@ namespace rwa2
         void robot_init();
 
         /**
-         * @brief Get the current location of the robot in the maze
+         * @brief Get the current loaction of the Robot
          * 
-         * @return std::vector<int> returns a vector containing the robot coords
+         * @return std::pair<int,int>  returns current coordinates as pair
          */
-        std::vector<int> get_curr_loc();
+        std::array<int,3> get_curr_loc();
 
         /**
          * @brief Moves the robot forward in the simulator
@@ -73,15 +73,18 @@ namespace rwa2
          * 
          * @param left_following true for left wall following 
          *                       false for right wall following
-         * @return int 
+         * @return bool tru if can move, false otherwise
          */
-        int move_robot(bool left_following);
+        bool move_robot(bool left_following);
 
         /**
-         * @brief Function for the Robot to search the maze
+         * @brief Function for the robot to search the maze
          * 
+         * @param argument Select the algorithm to for the robot
+         * @return true if path found
+         * @return false if path found
          */
-        void search_maze(std::string argument);
+        bool search_maze(std::string argument);
         
         private:
 
@@ -127,6 +130,7 @@ namespace rwa2
          * @return std::pair<int,int> return the goal coordinates as a pair
          */
         std::pair<int,int> generate_goal();
+        std::vector<std::array<int,3>> visited;
     };
 } // namespace rwa2
 
