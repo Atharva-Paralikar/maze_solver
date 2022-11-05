@@ -80,7 +80,7 @@ namespace rwa2
          * @param goal_x goal x-coordinate
          * @param goal_y goal y-coordinate
          */
-        void search_maze(int goal_x,int goal_y);
+        void search_maze();
         
         private:
 
@@ -119,6 +119,8 @@ namespace rwa2
          * 
          */
         std::array<std::array<rwa2::Cell,maze_width>,maze_height> maze;
+
+        std::pair<int,int> generate_goal();
     };
 } // namespace rwa2
 

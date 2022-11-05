@@ -4,6 +4,19 @@
 #include <vector>
 #include <iostream>
 
+std::pair<int,int> rwa2::Robot::generate_goal(){
+    std::pair<int,int> goal(0,0);
+    int max {15};
+    srand(time(0));
+    goal.first = rand()%max;
+    if (goal.first == 0){
+        goal.second = rand()%max;
+    }
+    Simulator::setColor(goal.first,goal.second,'G');
+    Simulator::setText(goal.first,goal.second,"GOAL");
+    return goal;
+}
+
 void rwa2 ::Robot::robot_init(){
     for(int x = 0; x < maze_width ; x++){
         for(int y = 0; y < maze_height ; y++){
@@ -13,8 +26,8 @@ void rwa2 ::Robot::robot_init(){
             maze.at(x).at(y).set_wall(WEST,(x == 0));
             std::array<char,4> directions{'n','e','s','w'};
             for (int i = 0; i < 4 ; i++){
-                if (maze.at(robot_x).at(robot_y).is_wall(i)){
-                    Simulator::setWall(robot_x,robot_y,directions.at(i));
+                if (maze.at(x).at(y).is_wall(i)){
+                    Simulator::setWall(x,y,directions.at(i));
                 }
             }
         }
@@ -72,9 +85,10 @@ std::vector<int> rwa2::Robot::get_curr_loc(){
     std::cerr<< "curent location"<<robot_x<<" "<<robot_y<<std::endl;
     return coords;
 }
-void rwa2::Robot::search_maze(int goal_x,int goal_y){
+void rwa2::Robot::search_maze(){
+    auto goal = generate_goal();
     auto curr_location = get_curr_loc();
-    while (!((curr_location[0] == goal_x) && (curr_location[1] == goal_y))){
+    while (!((curr_location[0] == goal.first) && (curr_location[1] == goal.second))){
         move_robot(true);
         curr_location = get_curr_loc();
     }
