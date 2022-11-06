@@ -18,7 +18,7 @@
 const bool LEFT{true};
 const bool RIGHT{false};
 
-namespace rwa2
+namespace rwa2_group2
 {
     class Robot{
         public:
@@ -85,6 +85,14 @@ namespace rwa2
          * @return false if path found
          */
         bool search_maze(std::string argument);
+
+        char get_next_direction(std::array<int,3> next_coords);
+        void backtrack();
+
+        bool move_from_north(char dir);
+        bool move_from_east(char dir);
+        bool move_from_south(char dir);
+        bool move_from_west(char dir);
         
         private:
 
@@ -122,7 +130,7 @@ namespace rwa2
          * @brief array to store the cells in the maze
          * 
          */
-        std::array<std::array<rwa2::Cell,maze_width>,maze_height> maze;
+        std::array<std::array<rwa2_group2::Cell,maze_width>,maze_height> maze;
 
         /**
          * @brief Function to generate a random goal on the perimeter of the maze

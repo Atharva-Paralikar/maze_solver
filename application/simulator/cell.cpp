@@ -1,14 +1,14 @@
 #include "cell.h"
 
-void rwa2::Cell::set_wall(int direction, bool is_wall){
+void rwa2_group2::Cell::set_wall(int direction, bool is_wall){
     cell_walls.at(direction) = is_wall;
 }
 
-bool rwa2::Cell::is_wall(int direction) const{
+bool rwa2_group2::Cell::is_wall(int direction) const{
     return cell_walls.at(direction);
 }
 
-int rwa2::Cell::number_of_walls() const{
+int rwa2_group2::Cell::number_of_walls() const{
     int walls {0};
     int wall_north{0};
     int wall_east{0};

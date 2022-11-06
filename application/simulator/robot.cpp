@@ -4,8 +4,9 @@
 #include <vector>
 #include <iostream>
 #include <cstring>
+#include <algorithm>
 
-void rwa2 ::Robot::robot_init(){
+void rwa2_group2::Robot::robot_init(){
     Simulator::setColor(0,0,'b');
     Simulator::setText(0,0,"Start");
     for(int x = 0; x < maze_width ; x++){
@@ -24,7 +25,7 @@ void rwa2 ::Robot::robot_init(){
     }
 }
 
-std::pair<int,int> rwa2::Robot::generate_goal(){
+std::pair<int,int> rwa2_group2::Robot::generate_goal(){
     std::pair<int,int> goal(0,0);
     int max {15};
     srand(time(0));
@@ -37,19 +38,19 @@ std::pair<int,int> rwa2::Robot::generate_goal(){
     return goal;
 }
 
-void rwa2::Robot::move_forward(){
+void rwa2_group2::Robot::move_forward(){
     Simulator::moveForward();
 }
 
-void rwa2::Robot::turn_left(){
+void rwa2_group2::Robot::turn_left(){
     Simulator::turnLeft();
 }
 
-void rwa2::Robot::turn_right(){
+void rwa2_group2::Robot::turn_right(){
     Simulator::turnRight();
 }
 
-void rwa2::Robot::check_walls(){
+void rwa2_group2::Robot::check_walls(){
     
     std::array<char,4> directions{'n','e','s','w'};
 
@@ -83,12 +84,185 @@ void rwa2::Robot::check_walls(){
         }
     }
 }
-std::array<int,3> rwa2::Robot::get_curr_loc(){
+
+bool rwa2_group2::Robot::move_from_north(char dir){
+    if (dir == 'n'){
+        robot_y ++;
+        robot_dir = NORTH;
+        move_forward();
+    }
+    if (dir == 'e'){
+        robot_x ++;
+        robot_dir = EAST;
+        turn_right();
+        move_forward();
+    }
+    if (dir == 's'){
+        robot_y --;
+        robot_dir = SOUTH;
+        turn_left();
+        turn_left();
+        move_forward();
+    }
+    if (dir == 'w'){
+        robot_x --;
+        robot_dir = WEST;
+        turn_left();
+        move_forward();
+    }
+    else{
+
+    }
+    Simulator::setColor(robot_x,robot_y,'r');
+}
+
+bool rwa2_group2::Robot::move_from_east(char dir){
+    if (dir == 'n'){
+        robot_y ++;
+        robot_dir = NORTH;
+        turn_right();
+        move_forward();
+    }
+    if (dir == 'e'){
+        robot_x ++;
+        robot_dir = EAST;
+        move_forward();      
+    }
+    if (dir == 's'){
+        robot_y --;
+        robot_dir = SOUTH;
+        turn_right();
+        move_forward();
+    }
+    if (dir == 'w'){
+        robot_x -= 1;
+        robot_dir = WEST;
+        turn_left();
+        turn_left();
+        move_forward();
+    }
+    else{
+
+    }
+    Simulator::setColor(robot_x,robot_y,'r');
+}
+
+bool rwa2_group2::Robot::move_from_south(char dir){
+    if (dir == 'n'){
+        robot_y ++;
+        robot_dir = NORTH;
+        turn_left();
+        turn_left();
+        move_forward();      
+    }
+    if (dir == 'e'){
+        robot_x ++;
+        robot_dir = EAST;
+        turn_left();
+        move_forward();        
+    }
+    if (dir == 's'){
+        robot_y --;
+        robot_dir = SOUTH;
+        move_forward();
+    }
+    if (dir == 'w'){
+        robot_x --;
+        robot_dir = WEST;
+        turn_right();
+        move_forward();
+    }
+    else{
+
+    }
+    Simulator::setColor(robot_x,robot_y,'r');
+}
+
+bool rwa2_group2::Robot::move_from_west(char dir){
+    if (dir == 'n'){
+        robot_y ++;
+        robot_dir = NORTH;
+        turn_right();
+        move_forward();     
+    }
+    if (dir == 'e'){
+        robot_x ++;
+        robot_dir = EAST;
+        turn_left();
+        turn_left();
+        move_forward();        
+    }
+    if (dir == 's'){
+        robot_y --;
+        robot_dir = SOUTH;
+        turn_left();
+        move_forward();
+    }
+    if (dir == 'w'){
+        robot_x --;
+        robot_dir = WEST;
+        move_forward();
+    }
+    else{
+
+    }
+    Simulator::setColor(robot_x,robot_y,'r');
+}
+std::array<int,3> rwa2_group2::Robot::get_curr_loc(){
     std::array<int,3> coords = {robot_x,robot_y,robot_dir};
-    std::cerr<< "Current location: (" << robot_x << " , " << robot_y << ")" <<std::endl;
+    std::cerr << "Current location: (" << robot_x << " , " << robot_y << ")" <<std::endl;
     return coords;
 }
-bool rwa2::Robot::search_maze(std::string argument){
+
+char rwa2_group2::Robot::get_next_direction(std::array<int,3> next_location){
+    std::array<char,4> directions = {'n','e','s','w'};
+    if((robot_x - next_location.at(0) == 1) && (robot_y - next_location.at(1) == 0)){
+        return directions.at(3);
+    }
+    else if ((robot_x - next_location.at(0) == -1) && (robot_y - next_location.at(1) == 0)){
+        return directions.at(1);
+    }
+    else if((robot_x - next_location.at(0) == 0) && (robot_y - next_location.at(1) == 1)){
+        return directions.at(2);
+    }
+    else if((robot_x - next_location.at(0) == 0) && (robot_y - next_location.at(1) == -1)){
+        return directions.at(0);
+    }
+    else{
+        turn_left();
+        turn_left();
+        return 'a';
+    }
+}
+
+void rwa2_group2::Robot::backtrack(){
+    std::reverse(visited.begin(),visited.end());
+    int iter = 0;
+
+    while (!(robot_x == 0 && robot_y == 0)){
+        std::cerr << robot_x << " "<< robot_y<< std::endl;
+        get_curr_loc();
+        std::array<int,3> next_location = visited.at(iter);
+        auto direction = get_next_direction(next_location);
+        std::cerr<< next_location.at(0) <<" "<< next_location.at(1)<< " " << direction <<std::endl;
+        if (robot_dir == NORTH){
+            move_from_north(direction);
+        }
+        else if (robot_dir == EAST){
+            move_from_east(direction);
+        }
+        else if (robot_dir == SOUTH){
+            move_from_south(direction);
+        }
+        else if (robot_dir == WEST){
+            move_from_west(direction);
+        }
+        iter++;
+        // visited.erase(visited.begin());
+    }
+}
+
+bool rwa2_group2::Robot::search_maze(std::string argument){
     auto goal = generate_goal();
     std::array<int,3> curr_location = get_curr_loc();
     std::string left = "left";
@@ -117,11 +291,17 @@ bool rwa2::Robot::search_maze(std::string argument){
         curr_location = get_curr_loc();
         Simulator::setColor(curr_location.at(0),curr_location.at(1),'c');
     }
+    for (auto i : visited){
+        for (auto j : i){
+            std::cerr << j << " ";
+        }
+        std::cerr << std::endl;
+    }
     std::cerr << "----- GOAL REACHED -----" << std::endl;
     return true;  
 }
 
-bool rwa2::Robot::move_robot(bool left_following = true){
+bool rwa2_group2::Robot::move_robot(bool left_following = true){
     auto curr_location = get_curr_loc();
     if (visited.capacity() > 0){
         for (int i = 0; i < visited.capacity();i++){
