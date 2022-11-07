@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ackreset_22',['ackReset',['../class_simulator.html#a76c399cf7d4e32991ead148212f94bb7',1,'Simulator']]]
+  ['backtrack_42',['backtrack',['../classrwa2__group2_1_1_robot.html#a3cff54df51f24aec5990699f38f16e93',1,'rwa2_group2::Robot']]]
 ];

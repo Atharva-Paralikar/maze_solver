@@ -2,9 +2,21 @@
 ------------------------------------------------------------------------
 Build the application
 ------------------------------------------------------------------------
-g++ -std=c++17 -g main.cpp simulator/simulator.cpp <add other files here> -o main
+g++ -std=c++17 -g main.cpp simulator/simulator.cpp robot.cpp cell.cpp -o main
 
 ------------------------------------------------------------------------
 To switch between left-hand rule approach and right-hand rule approach
 ------------------------------------------------------------------------
-Explain what to modify in your code to switch between the left-hand rule and the right-hand rule approaches
+
+Default run command:
+./main
+
+The default command will follow the left-hand rule for the algorithm
+
+Run Command for left-hand algorithm:
+
+./main left
+
+Run Command for right-hand algorithm:
+
+./main right

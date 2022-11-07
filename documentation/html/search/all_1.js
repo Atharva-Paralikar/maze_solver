@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['clearallcolor_1',['clearAllColor',['../class_simulator.html#ab67597b50f274e6c03f7913d86cbd696',1,'Simulator']]],
-  ['clearalltext_2',['clearAllText',['../class_simulator.html#a18566704e048a3e23df215df4055b44f',1,'Simulator']]],
-  ['clearcolor_3',['clearColor',['../class_simulator.html#ab7f4460016c5277c2c907ae7af9356f7',1,'Simulator']]],
-  ['cleartext_4',['clearText',['../class_simulator.html#af15a2139f85767d6fd937f5976bdacad',1,'Simulator']]],
-  ['clearwall_5',['clearWall',['../class_simulator.html#a2fcf77e77429b746a1a397de3b19267a',1,'Simulator']]]
+  ['backtrack_1',['backtrack',['../classrwa2__group2_1_1_robot.html#a3cff54df51f24aec5990699f38f16e93',1,'rwa2_group2::Robot']]]
 ];

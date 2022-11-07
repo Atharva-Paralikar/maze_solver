@@ -1,0 +1,99 @@
+\hypertarget{classrwa2__group2_1_1_cell}{}\doxysection{rwa2\+\_\+group2\+::Cell Class Reference}
+\label{classrwa2__group2_1_1_cell}\index{rwa2\_group2::Cell@{rwa2\_group2::Cell}}
+
+
+\mbox{\hyperlink{classrwa2__group2_1_1_cell}{Cell}} represents a position in the maze.  
+
+
+
+
+{\ttfamily \#include $<$cell.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classrwa2__group2_1_1_cell_a05e06e60ddde31e49fb86842b0e1f07a}{Cell}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classrwa2__group2_1_1_cell}{Cell}} object with no walls present. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrwa2__group2_1_1_cell_aa3ca9f10d186bd0010aeb1c0057bc3a3}{set\+\_\+wall}} (int direction, bool \mbox{\hyperlink{classrwa2__group2_1_1_cell_ac04d5dcce02cd5e7b3ee0c44030d3626}{is\+\_\+wall}})
+\begin{DoxyCompactList}\small\item\em Sets the wall object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classrwa2__group2_1_1_cell_ac04d5dcce02cd5e7b3ee0c44030d3626}{is\+\_\+wall}} (int direction) const
+\begin{DoxyCompactList}\small\item\em checks if the wall is present in the given direction \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classrwa2__group2_1_1_cell_a7f1bdf68f3d2efd1491970594c14bdaf}{number\+\_\+of\+\_\+walls}} () const
+\begin{DoxyCompactList}\small\item\em computes the number of walls the given cell has \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classrwa2__group2_1_1_cell}{Cell}} represents a position in the maze. 
+
+A cell is surrounded by 4 walls 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classrwa2__group2_1_1_cell_a05e06e60ddde31e49fb86842b0e1f07a}\label{classrwa2__group2_1_1_cell_a05e06e60ddde31e49fb86842b0e1f07a}} 
+\index{rwa2\_group2::Cell@{rwa2\_group2::Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!rwa2\_group2::Cell@{rwa2\_group2::Cell}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}}
+{\footnotesize\ttfamily rwa2\+\_\+group2\+::\+Cell\+::\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \mbox{\hyperlink{classrwa2__group2_1_1_cell}{Cell}} object with no walls present. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classrwa2__group2_1_1_cell_ac04d5dcce02cd5e7b3ee0c44030d3626}\label{classrwa2__group2_1_1_cell_ac04d5dcce02cd5e7b3ee0c44030d3626}} 
+\index{rwa2\_group2::Cell@{rwa2\_group2::Cell}!is\_wall@{is\_wall}}
+\index{is\_wall@{is\_wall}!rwa2\_group2::Cell@{rwa2\_group2::Cell}}
+\doxysubsubsection{\texorpdfstring{is\_wall()}{is\_wall()}}
+{\footnotesize\ttfamily bool rwa2\+\_\+group2\+::\+Cell\+::is\+\_\+wall (\begin{DoxyParamCaption}\item[{int}]{direction }\end{DoxyParamCaption}) const}
+
+
+
+checks if the wall is present in the given direction 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & the direction in which to check if there is wall \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if wall is present 
+
+false if wall is not present 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classrwa2__group2_1_1_cell_a7f1bdf68f3d2efd1491970594c14bdaf}\label{classrwa2__group2_1_1_cell_a7f1bdf68f3d2efd1491970594c14bdaf}} 
+\index{rwa2\_group2::Cell@{rwa2\_group2::Cell}!number\_of\_walls@{number\_of\_walls}}
+\index{number\_of\_walls@{number\_of\_walls}!rwa2\_group2::Cell@{rwa2\_group2::Cell}}
+\doxysubsubsection{\texorpdfstring{number\_of\_walls()}{number\_of\_walls()}}
+{\footnotesize\ttfamily int rwa2\+\_\+group2\+::\+Cell\+::number\+\_\+of\+\_\+walls (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+computes the number of walls the given cell has 
+
+\begin{DoxyReturn}{Returns}
+int Number of walls surrounding the cell 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classrwa2__group2_1_1_cell_aa3ca9f10d186bd0010aeb1c0057bc3a3}\label{classrwa2__group2_1_1_cell_aa3ca9f10d186bd0010aeb1c0057bc3a3}} 
+\index{rwa2\_group2::Cell@{rwa2\_group2::Cell}!set\_wall@{set\_wall}}
+\index{set\_wall@{set\_wall}!rwa2\_group2::Cell@{rwa2\_group2::Cell}}
+\doxysubsubsection{\texorpdfstring{set\_wall()}{set\_wall()}}
+{\footnotesize\ttfamily void rwa2\+\_\+group2\+::\+Cell\+::set\+\_\+wall (\begin{DoxyParamCaption}\item[{int}]{direction,  }\item[{bool}]{is\+\_\+wall }\end{DoxyParamCaption})}
+
+
+
+Sets the wall object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & direction of the cell the wall need to be placed \\
+\hline
+{\em is\+\_\+wall} & true if wall is present, false if not \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+application/\mbox{\hyperlink{cell_8h}{cell.\+h}}\item 
+application/\mbox{\hyperlink{cell_8cpp}{cell.\+cpp}}\end{DoxyCompactItemize}

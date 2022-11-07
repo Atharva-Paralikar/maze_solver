@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['mazeheight_28',['mazeHeight',['../class_simulator.html#a3e1a7230da3821cbc06924d4f3f71ece',1,'Simulator']]],
-  ['mazewidth_29',['mazeWidth',['../class_simulator.html#a3880464920ff0e7e5d72d7d610357a75',1,'Simulator']]],
-  ['moveforward_30',['moveForward',['../class_simulator.html#a0ac8075a09d517a4538dea7d70b80e55',1,'Simulator']]]
+  ['get_5fcurr_5floc_45',['get_curr_loc',['../classrwa2__group2_1_1_robot.html#a2eaf7737275fdedc3fb64938ae373c53',1,'rwa2_group2::Robot']]],
+  ['get_5fnext_5fdirection_46',['get_next_direction',['../classrwa2__group2_1_1_robot.html#a355e71615bed499add528b758b1c4b52',1,'rwa2_group2::Robot']]]
 ];

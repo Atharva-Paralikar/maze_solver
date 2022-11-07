@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['turnleft_14',['turnLeft',['../class_simulator.html#ab103b5780fb3102441270df9c006e435',1,'Simulator']]],
-  ['turnright_15',['turnRight',['../class_simulator.html#af3e20b66f7372a26639a2ecf6f881490',1,'Simulator']]]
+  ['get_5fcurr_5floc_7',['get_curr_loc',['../classrwa2__group2_1_1_robot.html#a2eaf7737275fdedc3fb64938ae373c53',1,'rwa2_group2::Robot']]],
+  ['get_5fnext_5fdirection_8',['get_next_direction',['../classrwa2__group2_1_1_robot.html#a355e71615bed499add528b758b1c4b52',1,'rwa2_group2::Robot']]]
 ];

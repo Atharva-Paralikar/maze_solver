@@ -1,0 +1,272 @@
+\hypertarget{classrwa2__group2_1_1_robot}{}\doxysection{rwa2\+\_\+group2\+::Robot Class Reference}
+\label{classrwa2__group2_1_1_robot}\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+
+
+\mbox{\hyperlink{classrwa2__group2_1_1_robot}{Robot}} represents the mouse in the maze.  
+
+
+
+
+{\ttfamily \#include $<$robot.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classrwa2__group2_1_1_robot_a6e7c1a44feee35ea4cf468060785c776}{Robot}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new \mbox{\hyperlink{classrwa2__group2_1_1_robot}{Robot}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrwa2__group2_1_1_robot_aebe3d30a142e1944f2b41b5129f6d5d6}{robot\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Sets walls around the perimeter. \end{DoxyCompactList}\item 
+std\+::array$<$ int, 3 $>$ \mbox{\hyperlink{classrwa2__group2_1_1_robot_a2eaf7737275fdedc3fb64938ae373c53}{get\+\_\+curr\+\_\+loc}} ()
+\begin{DoxyCompactList}\small\item\em Get the current loaction of the \mbox{\hyperlink{classrwa2__group2_1_1_robot}{Robot}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrwa2__group2_1_1_robot_a70fefa93c379793b77660149060635f8}{move\+\_\+forward}} ()
+\begin{DoxyCompactList}\small\item\em Moves the robot forward in the simulator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrwa2__group2_1_1_robot_ad0e22da52c3fdf473a99f1294f1366a5}{turn\+\_\+left}} ()
+\begin{DoxyCompactList}\small\item\em Turns the robot to left in the simulator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrwa2__group2_1_1_robot_ace7f0460f6d063bb48cb615434e2b52e}{turn\+\_\+right}} ()
+\begin{DoxyCompactList}\small\item\em Turns the robot to right in the simulator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrwa2__group2_1_1_robot_acf3bcb468c0bf02482c11ae90a8a91ef}{check\+\_\+walls}} ()
+\begin{DoxyCompactList}\small\item\em Checks the surrounding walls of the robot. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classrwa2__group2_1_1_robot_ac7c89c9dadb9f6b027fd671ac9aca6b2}{move\+\_\+robot}} (bool left\+\_\+following)
+\begin{DoxyCompactList}\small\item\em algorithm to move the robot \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classrwa2__group2_1_1_robot_a2a721a358a521859adae1f28ca2d4fea}{search\+\_\+maze}} (std\+::string argument)
+\begin{DoxyCompactList}\small\item\em Function for the robot to search the maze. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrwa2__group2_1_1_robot_a219bc8296c0cff45d6c29311b091dd57}{remove\+\_\+cyclic\+\_\+loop\+\_\+from\+\_\+path}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the optimized path for backtracking. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{classrwa2__group2_1_1_robot_a355e71615bed499add528b758b1c4b52}{get\+\_\+next\+\_\+direction}} (std\+::array$<$ int, 3 $>$ next\+\_\+coords)
+\begin{DoxyCompactList}\small\item\em Get the direction of the cell the robot needs to move to. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrwa2__group2_1_1_robot_a3cff54df51f24aec5990699f38f16e93}{backtrack}} ()
+\begin{DoxyCompactList}\small\item\em Fumction to backtrack the path back to home position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrwa2__group2_1_1_robot_afac54b116f17def8a5e4d23137483445}{move\+\_\+from\+\_\+north}} (char dir)
+\begin{DoxyCompactList}\small\item\em Utility function to travel if robot is facing north. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrwa2__group2_1_1_robot_ab9091477a04fc8798f7feb786895deec}{move\+\_\+from\+\_\+east}} (char dir)
+\begin{DoxyCompactList}\small\item\em Utility function to travel if robot is facing east. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrwa2__group2_1_1_robot_a937455159d21635a700d2df45846233d}{move\+\_\+from\+\_\+south}} (char dir)
+\begin{DoxyCompactList}\small\item\em Utility function to travel if robot is facing south. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrwa2__group2_1_1_robot_aceb41d9dbee5e8a708649e907daf09c3}{move\+\_\+from\+\_\+west}} (char dir)
+\begin{DoxyCompactList}\small\item\em Utility function to travel if robot is facing west. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classrwa2__group2_1_1_robot}{Robot}} represents the mouse in the maze. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_a6e7c1a44feee35ea4cf468060785c776}\label{classrwa2__group2_1_1_robot_a6e7c1a44feee35ea4cf468060785c776}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!Robot@{Robot}}
+\index{Robot@{Robot}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{Robot()}{Robot()}}
+{\footnotesize\ttfamily rwa2\+\_\+group2\+::\+Robot\+::\+Robot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a new \mbox{\hyperlink{classrwa2__group2_1_1_robot}{Robot}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_a3cff54df51f24aec5990699f38f16e93}\label{classrwa2__group2_1_1_robot_a3cff54df51f24aec5990699f38f16e93}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!backtrack@{backtrack}}
+\index{backtrack@{backtrack}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{backtrack()}{backtrack()}}
+{\footnotesize\ttfamily void rwa2\+\_\+group2\+::\+Robot\+::backtrack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fumction to backtrack the path back to home position. 
+
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_acf3bcb468c0bf02482c11ae90a8a91ef}\label{classrwa2__group2_1_1_robot_acf3bcb468c0bf02482c11ae90a8a91ef}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!check\_walls@{check\_walls}}
+\index{check\_walls@{check\_walls}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{check\_walls()}{check\_walls()}}
+{\footnotesize\ttfamily void rwa2\+\_\+group2\+::\+Robot\+::check\+\_\+walls (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks the surrounding walls of the robot. 
+
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_a2eaf7737275fdedc3fb64938ae373c53}\label{classrwa2__group2_1_1_robot_a2eaf7737275fdedc3fb64938ae373c53}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!get\_curr\_loc@{get\_curr\_loc}}
+\index{get\_curr\_loc@{get\_curr\_loc}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{get\_curr\_loc()}{get\_curr\_loc()}}
+{\footnotesize\ttfamily std\+::array$<$ int, 3 $>$ rwa2\+\_\+group2\+::\+Robot\+::get\+\_\+curr\+\_\+loc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the current loaction of the \mbox{\hyperlink{classrwa2__group2_1_1_robot}{Robot}}. 
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$int,int$>$ returns current coordinates as pair 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_a355e71615bed499add528b758b1c4b52}\label{classrwa2__group2_1_1_robot_a355e71615bed499add528b758b1c4b52}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!get\_next\_direction@{get\_next\_direction}}
+\index{get\_next\_direction@{get\_next\_direction}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{get\_next\_direction()}{get\_next\_direction()}}
+{\footnotesize\ttfamily char rwa2\+\_\+group2\+::\+Robot\+::get\+\_\+next\+\_\+direction (\begin{DoxyParamCaption}\item[{std\+::array$<$ int, 3 $>$}]{next\+\_\+coords }\end{DoxyParamCaption})}
+
+
+
+Get the direction of the cell the robot needs to move to. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+\_\+coords} & coordinates of the next cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char returns the direction char \{\textquotesingle{}n\textquotesingle{},\textquotesingle{}e\textquotesingle{},\textquotesingle{}s\textquotesingle{},\textquotesingle{}w\textquotesingle{}\} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_a70fefa93c379793b77660149060635f8}\label{classrwa2__group2_1_1_robot_a70fefa93c379793b77660149060635f8}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!move\_forward@{move\_forward}}
+\index{move\_forward@{move\_forward}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{move\_forward()}{move\_forward()}}
+{\footnotesize\ttfamily void rwa2\+\_\+group2\+::\+Robot\+::move\+\_\+forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Moves the robot forward in the simulator. 
+
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_ab9091477a04fc8798f7feb786895deec}\label{classrwa2__group2_1_1_robot_ab9091477a04fc8798f7feb786895deec}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!move\_from\_east@{move\_from\_east}}
+\index{move\_from\_east@{move\_from\_east}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{move\_from\_east()}{move\_from\_east()}}
+{\footnotesize\ttfamily void rwa2\+\_\+group2\+::\+Robot\+::move\+\_\+from\+\_\+east (\begin{DoxyParamCaption}\item[{char}]{dir }\end{DoxyParamCaption})}
+
+
+
+Utility function to travel if robot is facing east. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & direction the robot needs to move \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_afac54b116f17def8a5e4d23137483445}\label{classrwa2__group2_1_1_robot_afac54b116f17def8a5e4d23137483445}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!move\_from\_north@{move\_from\_north}}
+\index{move\_from\_north@{move\_from\_north}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{move\_from\_north()}{move\_from\_north()}}
+{\footnotesize\ttfamily void rwa2\+\_\+group2\+::\+Robot\+::move\+\_\+from\+\_\+north (\begin{DoxyParamCaption}\item[{char}]{dir }\end{DoxyParamCaption})}
+
+
+
+Utility function to travel if robot is facing north. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & direction the robot needs to move \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_a937455159d21635a700d2df45846233d}\label{classrwa2__group2_1_1_robot_a937455159d21635a700d2df45846233d}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!move\_from\_south@{move\_from\_south}}
+\index{move\_from\_south@{move\_from\_south}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{move\_from\_south()}{move\_from\_south()}}
+{\footnotesize\ttfamily void rwa2\+\_\+group2\+::\+Robot\+::move\+\_\+from\+\_\+south (\begin{DoxyParamCaption}\item[{char}]{dir }\end{DoxyParamCaption})}
+
+
+
+Utility function to travel if robot is facing south. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & direction the robot needs to move \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_aceb41d9dbee5e8a708649e907daf09c3}\label{classrwa2__group2_1_1_robot_aceb41d9dbee5e8a708649e907daf09c3}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!move\_from\_west@{move\_from\_west}}
+\index{move\_from\_west@{move\_from\_west}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{move\_from\_west()}{move\_from\_west()}}
+{\footnotesize\ttfamily void rwa2\+\_\+group2\+::\+Robot\+::move\+\_\+from\+\_\+west (\begin{DoxyParamCaption}\item[{char}]{dir }\end{DoxyParamCaption})}
+
+
+
+Utility function to travel if robot is facing west. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & direction the robot needs to move \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_ac7c89c9dadb9f6b027fd671ac9aca6b2}\label{classrwa2__group2_1_1_robot_ac7c89c9dadb9f6b027fd671ac9aca6b2}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!move\_robot@{move\_robot}}
+\index{move\_robot@{move\_robot}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{move\_robot()}{move\_robot()}}
+{\footnotesize\ttfamily bool rwa2\+\_\+group2\+::\+Robot\+::move\+\_\+robot (\begin{DoxyParamCaption}\item[{bool}]{left\+\_\+following = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+algorithm to move the robot 
+
+
+\begin{DoxyParams}{Parameters}
+{\em left\+\_\+following} & true for left wall following false for right wall following \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool tru if can move, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_a219bc8296c0cff45d6c29311b091dd57}\label{classrwa2__group2_1_1_robot_a219bc8296c0cff45d6c29311b091dd57}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!remove\_cyclic\_loop\_from\_path@{remove\_cyclic\_loop\_from\_path}}
+\index{remove\_cyclic\_loop\_from\_path@{remove\_cyclic\_loop\_from\_path}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{remove\_cyclic\_loop\_from\_path()}{remove\_cyclic\_loop\_from\_path()}}
+{\footnotesize\ttfamily void rwa2\+\_\+group2\+::\+Robot\+::remove\+\_\+cyclic\+\_\+loop\+\_\+from\+\_\+path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to return the optimized path for backtracking. 
+
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_aebe3d30a142e1944f2b41b5129f6d5d6}\label{classrwa2__group2_1_1_robot_aebe3d30a142e1944f2b41b5129f6d5d6}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!robot\_init@{robot\_init}}
+\index{robot\_init@{robot\_init}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{robot\_init()}{robot\_init()}}
+{\footnotesize\ttfamily void rwa2\+\_\+group2\+::\+Robot\+::robot\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets walls around the perimeter. 
+
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_a2a721a358a521859adae1f28ca2d4fea}\label{classrwa2__group2_1_1_robot_a2a721a358a521859adae1f28ca2d4fea}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!search\_maze@{search\_maze}}
+\index{search\_maze@{search\_maze}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{search\_maze()}{search\_maze()}}
+{\footnotesize\ttfamily bool rwa2\+\_\+group2\+::\+Robot\+::search\+\_\+maze (\begin{DoxyParamCaption}\item[{std\+::string}]{argument }\end{DoxyParamCaption})}
+
+
+
+Function for the robot to search the maze. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argument} & Select the algorithm to for the robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if path found 
+
+false if path found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_ad0e22da52c3fdf473a99f1294f1366a5}\label{classrwa2__group2_1_1_robot_ad0e22da52c3fdf473a99f1294f1366a5}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!turn\_left@{turn\_left}}
+\index{turn\_left@{turn\_left}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{turn\_left()}{turn\_left()}}
+{\footnotesize\ttfamily void rwa2\+\_\+group2\+::\+Robot\+::turn\+\_\+left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Turns the robot to left in the simulator. 
+
+\mbox{\Hypertarget{classrwa2__group2_1_1_robot_ace7f0460f6d063bb48cb615434e2b52e}\label{classrwa2__group2_1_1_robot_ace7f0460f6d063bb48cb615434e2b52e}} 
+\index{rwa2\_group2::Robot@{rwa2\_group2::Robot}!turn\_right@{turn\_right}}
+\index{turn\_right@{turn\_right}!rwa2\_group2::Robot@{rwa2\_group2::Robot}}
+\doxysubsubsection{\texorpdfstring{turn\_right()}{turn\_right()}}
+{\footnotesize\ttfamily void rwa2\+\_\+group2\+::\+Robot\+::turn\+\_\+right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Turns the robot to right in the simulator. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+application/\mbox{\hyperlink{robot_8h}{robot.\+h}}\item 
+application/\mbox{\hyperlink{robot_8cpp}{robot.\+cpp}}\end{DoxyCompactItemize}

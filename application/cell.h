@@ -4,9 +4,11 @@
 /**
  * @file cell.h
  * @author Atharva Paralikar (atharvap@umd.edu)
- * @brief Header file containing the cell class
+ * @author Abhilash Mane (amane@umd.edu)
+ * @author Abhishek Reddy (areddy42@umd.edu)
+ * @brief Functions and atrributes of the maze cell
  * @version 0.1
- * @date 2022-11-03
+ * @date 2022-11-07
  * 
  * @copyright Copyright (c) 2022
  * 

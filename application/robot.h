@@ -4,6 +4,8 @@
 /**
  * @file robot.h
  * @author Atharva Paralikar (atharvap@umd.edu)
+ * @author Abhilash Mane (amane@umd.edu)
+ * @author Abhishek Reddy (areddy42@umd.edu)
  * @brief Functions to Control Robot
  * @version 0.1
  * @date 2022-11-03
@@ -14,12 +16,17 @@
 #include "cell.h"
 #include <array>
 #include <vector>
+#include <map>
 
 const bool LEFT{true};
 const bool RIGHT{false};
 
 namespace rwa2_group2
 {
+    /**
+     * @brief Robot represents the mouse in the maze
+     * 
+     */
     class Robot{
         public:
         /**
@@ -86,13 +93,54 @@ namespace rwa2_group2
          */
         bool search_maze(std::string argument);
 
-        char get_next_direction(std::array<int,3> next_coords);
-        void backtrack();
+        /**
+         * @brief Function to return the optimized path for backtracking
+         * 
+         *  
+         */
+        void remove_cyclic_loop_from_path();
 
-        bool move_from_north(char dir);
-        bool move_from_east(char dir);
-        bool move_from_south(char dir);
-        bool move_from_west(char dir);
+        /**
+         * @brief Get the direction of the cell the robot needs to move to
+         * 
+         * @param next_coords coordinates of the next cell
+         * @return char returns the direction char {'n','e','s','w'}
+         */
+        char get_next_direction(std::array<int,3> next_coords);
+
+        /**
+         * @brief Fumction to backtrack the path back to home position
+         * 
+         */
+        void backtrack();
+        
+        /**
+         * @brief Utility function to travel if robot is facing north
+         * 
+         * @param dir direction the robot needs to move
+         */
+        void move_from_north(char dir);
+
+        /**
+         * @brief Utility function to travel if robot is facing east
+         * 
+         * @param dir direction the robot needs to move
+         */
+        void move_from_east(char dir);
+
+        /**
+         * @brief Utility function to travel if robot is facing south
+         * 
+         * @param dir direction the robot needs to move
+         */
+        void move_from_south(char dir);
+
+        /**
+         * @brief Utility function to travel if robot is facing west
+         * 
+         * @param dir direction the robot needs to move
+         */
+        void move_from_west(char dir);
         
         private:
 
@@ -138,7 +186,18 @@ namespace rwa2_group2
          * @return std::pair<int,int> return the goal coordinates as a pair
          */
         std::pair<int,int> generate_goal();
+
+        /**
+         * @brief vector to save the visited nodes
+         * 
+         */
         std::vector<std::array<int,3>> visited;
+
+        /**
+         * @brief map to store occurence of states. Used to remove cyclic path
+         * 
+         */
+        std::map<std::array<int,2>,int> lookup_for_repeated_entries;
     };
 } // namespace rwa2
 

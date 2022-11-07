@@ -1,10 +1,11 @@
-#include "simulator.h"
+#include "simulator/simulator.h"
 #include "robot.h"
 #include <array>
 #include <vector>
 #include <iostream>
 #include <cstring>
 #include <algorithm>
+#include <map>
 
 void rwa2_group2::Robot::robot_init(){
     Simulator::setColor(0,0,'b');
@@ -33,8 +34,8 @@ std::pair<int,int> rwa2_group2::Robot::generate_goal(){
     if ((goal.first == 0) || (goal.first == 15)){
         goal.second = rand()%max + 1;
     }
-    Simulator::setColor(goal.first,goal.second,'G');
-    Simulator::setText(goal.first,goal.second,"GOAL");
+    Simulator::setColor(goal.first,goal.second,'r');
+    Simulator::setText(goal.first,goal.second,"G");
     return goal;
 }
 
@@ -85,7 +86,7 @@ void rwa2_group2::Robot::check_walls(){
     }
 }
 
-bool rwa2_group2::Robot::move_from_north(char dir){
+void rwa2_group2::Robot::move_from_north(char dir){
     if (dir == 'n'){
         robot_y ++;
         robot_dir = NORTH;
@@ -110,17 +111,14 @@ bool rwa2_group2::Robot::move_from_north(char dir){
         turn_left();
         move_forward();
     }
-    else{
-
-    }
-    Simulator::setColor(robot_x,robot_y,'r');
+    Simulator::setColor(robot_x,robot_y,'b');
 }
 
-bool rwa2_group2::Robot::move_from_east(char dir){
+void rwa2_group2::Robot::move_from_east(char dir){
     if (dir == 'n'){
         robot_y ++;
         robot_dir = NORTH;
-        turn_right();
+        turn_left();
         move_forward();
     }
     if (dir == 'e'){
@@ -141,13 +139,10 @@ bool rwa2_group2::Robot::move_from_east(char dir){
         turn_left();
         move_forward();
     }
-    else{
-
-    }
-    Simulator::setColor(robot_x,robot_y,'r');
+    Simulator::setColor(robot_x,robot_y,'b');
 }
 
-bool rwa2_group2::Robot::move_from_south(char dir){
+void rwa2_group2::Robot::move_from_south(char dir){
     if (dir == 'n'){
         robot_y ++;
         robot_dir = NORTH;
@@ -172,13 +167,10 @@ bool rwa2_group2::Robot::move_from_south(char dir){
         turn_right();
         move_forward();
     }
-    else{
-
-    }
-    Simulator::setColor(robot_x,robot_y,'r');
+    Simulator::setColor(robot_x,robot_y,'b');
 }
 
-bool rwa2_group2::Robot::move_from_west(char dir){
+void rwa2_group2::Robot::move_from_west(char dir){
     if (dir == 'n'){
         robot_y ++;
         robot_dir = NORTH;
@@ -203,11 +195,25 @@ bool rwa2_group2::Robot::move_from_west(char dir){
         robot_dir = WEST;
         move_forward();
     }
-    else{
-
-    }
-    Simulator::setColor(robot_x,robot_y,'r');
+    Simulator::setColor(robot_x,robot_y,'b');
 }
+
+void rwa2_group2::Robot::remove_cyclic_loop_from_path(){
+    int iter=0;
+
+    while(iter<visited.size()){
+        auto temp = visited.at(iter);
+        if (lookup_for_repeated_entries[{temp[0],temp[1]}]==2){
+            visited.erase(visited.begin()+iter);
+            while((temp[0]!=visited.at(iter).at(0)||temp[1]!=visited.at(iter).at(1) ))
+            {
+                visited.erase(visited.begin()+iter);
+            }
+        }
+        iter=iter+1;
+    }
+}
+
 std::array<int,3> rwa2_group2::Robot::get_curr_loc(){
     std::array<int,3> coords = {robot_x,robot_y,robot_dir};
     std::cerr << "Current location: (" << robot_x << " , " << robot_y << ")" <<std::endl;
@@ -229,22 +235,20 @@ char rwa2_group2::Robot::get_next_direction(std::array<int,3> next_location){
         return directions.at(0);
     }
     else{
-        turn_left();
-        turn_left();
         return 'a';
     }
 }
 
+
 void rwa2_group2::Robot::backtrack(){
     std::reverse(visited.begin(),visited.end());
     int iter = 0;
-
     while (!(robot_x == 0 && robot_y == 0)){
-        std::cerr << robot_x << " "<< robot_y<< std::endl;
-        get_curr_loc();
+        // get_curr_loc();
         std::array<int,3> next_location = visited.at(iter);
+        // std::cerr << next_location.at(0)<<" "<<next_location.at(1)<<std::endl;
         auto direction = get_next_direction(next_location);
-        std::cerr<< next_location.at(0) <<" "<< next_location.at(1)<< " " << direction <<std::endl;
+        // std::cerr << direction << std::endl;
         if (robot_dir == NORTH){
             move_from_north(direction);
         }
@@ -258,7 +262,6 @@ void rwa2_group2::Robot::backtrack(){
             move_from_west(direction);
         }
         iter++;
-        // visited.erase(visited.begin());
     }
 }
 
@@ -274,6 +277,7 @@ bool rwa2_group2::Robot::search_maze(std::string argument){
                 return false;
             }
             else{
+                lookup_for_repeated_entries[{curr_location[0],curr_location[1]}]=lookup_for_repeated_entries[{curr_location[0],curr_location[1]}]+1;
                 visited.emplace_back(curr_location);
                 visited.shrink_to_fit();
             }
@@ -284,18 +288,13 @@ bool rwa2_group2::Robot::search_maze(std::string argument){
                 return false;
             }
             else{
+                lookup_for_repeated_entries[{curr_location[0],curr_location[1]}]=lookup_for_repeated_entries[{curr_location[0],curr_location[1]}]+1;
                 visited.emplace_back(curr_location);
                 visited.shrink_to_fit();
             }
         }
         curr_location = get_curr_loc();
         Simulator::setColor(curr_location.at(0),curr_location.at(1),'c');
-    }
-    for (auto i : visited){
-        for (auto j : i){
-            std::cerr << j << " ";
-        }
-        std::cerr << std::endl;
     }
     std::cerr << "----- GOAL REACHED -----" << std::endl;
     return true;  
@@ -337,6 +336,7 @@ bool rwa2_group2::Robot::move_robot(bool left_following = true){
                 turn_left();
                 turn_left();
                 move_forward();
+                std::array<int,2> pos = {robot_x,robot_y};
                 robot_y --;
                 robot_dir = SOUTH;
                 return true;
@@ -367,6 +367,7 @@ bool rwa2_group2::Robot::move_robot(bool left_following = true){
                 turn_left();
                 turn_left();
                 move_forward();
+                std::array<int,2> pos = {robot_x,robot_y};
                 robot_x --;
                 robot_dir = WEST;
                 return true;
@@ -397,6 +398,7 @@ bool rwa2_group2::Robot::move_robot(bool left_following = true){
                 turn_left();
                 turn_left();
                 move_forward();
+                std::array<int,2> pos = {robot_x,robot_y};
                 robot_y ++;
                 robot_dir = NORTH;
                 return true;
@@ -427,6 +429,7 @@ bool rwa2_group2::Robot::move_robot(bool left_following = true){
                 turn_left();
                 turn_left();
                 move_forward();
+                std::array<int,2> pos = {robot_x,robot_y};
                 robot_x ++;
                 robot_dir = EAST;
                 return true;
@@ -460,6 +463,7 @@ bool rwa2_group2::Robot::move_robot(bool left_following = true){
                 turn_right();
                 turn_right();
                 move_forward();
+                std::array<int,2> pos = {robot_x,robot_y};
                 robot_y --;
                 robot_dir = SOUTH;
                 return true;
@@ -490,6 +494,7 @@ bool rwa2_group2::Robot::move_robot(bool left_following = true){
                 turn_right();
                 turn_right();
                 move_forward();
+                std::array<int,2> pos = {robot_x,robot_y};
                 robot_x --;
                 robot_dir = WEST;
                 return true;
@@ -520,6 +525,7 @@ bool rwa2_group2::Robot::move_robot(bool left_following = true){
                 turn_right();
                 turn_right();
                 move_forward();
+                std::array<int,2> pos = {robot_x,robot_y};
                 robot_y ++;
                 robot_dir = NORTH;
                 return true;
@@ -550,6 +556,7 @@ bool rwa2_group2::Robot::move_robot(bool left_following = true){
                 turn_right();
                 turn_right();
                 move_forward();
+                std::array<int,2> pos = {robot_x,robot_y};
                 robot_x ++;
                 robot_dir = EAST;
                 return true;
