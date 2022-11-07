@@ -28,7 +28,7 @@ int main(int argc , char *argv[]){
     }
     std::cerr << "The robot will follow the " << args <<
                                          " following algorithm" <<std::endl;
-    std::unique_ptr<rwa2_group2::Robot> robot = std::make_unique<rwa2_group2::Robot>();
+    std::unique_ptr<rwa2_group1::Robot> robot = std::make_unique<rwa2_group1::Robot>();
     robot->robot_init();
     if(!robot->search_maze(args)){
         std::cerr << "Stuck in loop! Path not found! " << std::endl;

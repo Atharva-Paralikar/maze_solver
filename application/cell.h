@@ -20,7 +20,7 @@ const int EAST {1};
 const int SOUTH {2};
 const int WEST {3};
 
-namespace rwa2_group2{
+namespace rwa2_group1{
 
     /**
      * @brief Cell represents a position in the maze

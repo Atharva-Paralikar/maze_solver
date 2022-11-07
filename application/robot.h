@@ -21,7 +21,7 @@
 const bool LEFT{true};
 const bool RIGHT{false};
 
-namespace rwa2_group2
+namespace rwa2_group1
 {
     /**
      * @brief Robot represents the mouse in the maze
@@ -178,7 +178,7 @@ namespace rwa2_group2
          * @brief array to store the cells in the maze
          * 
          */
-        std::array<std::array<rwa2_group2::Cell,maze_width>,maze_height> maze;
+        std::array<std::array<rwa2_group1::Cell,maze_width>,maze_height> maze;
 
         /**
          * @brief Function to generate a random goal on the perimeter of the maze

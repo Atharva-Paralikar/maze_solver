@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <map>
 
-void rwa2_group2::Robot::robot_init(){
+void rwa2_group1::Robot::robot_init(){
     Simulator::setColor(0,0,'b');
     Simulator::setText(0,0,"Start");
     for(int x = 0; x < maze_width ; x++){
@@ -26,7 +26,7 @@ void rwa2_group2::Robot::robot_init(){
     }
 }
 
-std::pair<int,int> rwa2_group2::Robot::generate_goal(){
+std::pair<int,int> rwa2_group1::Robot::generate_goal(){
     std::pair<int,int> goal(0,0);
     int max {15};
     srand(time(0));
@@ -39,19 +39,19 @@ std::pair<int,int> rwa2_group2::Robot::generate_goal(){
     return goal;
 }
 
-void rwa2_group2::Robot::move_forward(){
+void rwa2_group1::Robot::move_forward(){
     Simulator::moveForward();
 }
 
-void rwa2_group2::Robot::turn_left(){
+void rwa2_group1::Robot::turn_left(){
     Simulator::turnLeft();
 }
 
-void rwa2_group2::Robot::turn_right(){
+void rwa2_group1::Robot::turn_right(){
     Simulator::turnRight();
 }
 
-void rwa2_group2::Robot::check_walls(){
+void rwa2_group1::Robot::check_walls(){
     
     std::array<char,4> directions{'n','e','s','w'};
 
@@ -86,7 +86,7 @@ void rwa2_group2::Robot::check_walls(){
     }
 }
 
-void rwa2_group2::Robot::move_from_north(char dir){
+void rwa2_group1::Robot::move_from_north(char dir){
     if (dir == 'n'){
         robot_y ++;
         robot_dir = NORTH;
@@ -114,7 +114,7 @@ void rwa2_group2::Robot::move_from_north(char dir){
     Simulator::setColor(robot_x,robot_y,'b');
 }
 
-void rwa2_group2::Robot::move_from_east(char dir){
+void rwa2_group1::Robot::move_from_east(char dir){
     if (dir == 'n'){
         robot_y ++;
         robot_dir = NORTH;
@@ -142,7 +142,7 @@ void rwa2_group2::Robot::move_from_east(char dir){
     Simulator::setColor(robot_x,robot_y,'b');
 }
 
-void rwa2_group2::Robot::move_from_south(char dir){
+void rwa2_group1::Robot::move_from_south(char dir){
     if (dir == 'n'){
         robot_y ++;
         robot_dir = NORTH;
@@ -170,7 +170,7 @@ void rwa2_group2::Robot::move_from_south(char dir){
     Simulator::setColor(robot_x,robot_y,'b');
 }
 
-void rwa2_group2::Robot::move_from_west(char dir){
+void rwa2_group1::Robot::move_from_west(char dir){
     if (dir == 'n'){
         robot_y ++;
         robot_dir = NORTH;
@@ -198,7 +198,7 @@ void rwa2_group2::Robot::move_from_west(char dir){
     Simulator::setColor(robot_x,robot_y,'b');
 }
 
-void rwa2_group2::Robot::remove_cyclic_loop_from_path(){
+void rwa2_group1::Robot::remove_cyclic_loop_from_path(){
     int iter=0;
 
     while(iter<visited.size()){
@@ -214,13 +214,13 @@ void rwa2_group2::Robot::remove_cyclic_loop_from_path(){
     }
 }
 
-std::array<int,3> rwa2_group2::Robot::get_curr_loc(){
+std::array<int,3> rwa2_group1::Robot::get_curr_loc(){
     std::array<int,3> coords = {robot_x,robot_y,robot_dir};
     std::cerr << "Current location: (" << robot_x << " , " << robot_y << ")" <<std::endl;
     return coords;
 }
 
-char rwa2_group2::Robot::get_next_direction(std::array<int,3> next_location){
+char rwa2_group1::Robot::get_next_direction(std::array<int,3> next_location){
     std::array<char,4> directions = {'n','e','s','w'};
     if((robot_x - next_location.at(0) == 1) && (robot_y - next_location.at(1) == 0)){
         return directions.at(3);
@@ -240,7 +240,7 @@ char rwa2_group2::Robot::get_next_direction(std::array<int,3> next_location){
 }
 
 
-void rwa2_group2::Robot::backtrack(){
+void rwa2_group1::Robot::backtrack(){
     std::reverse(visited.begin(),visited.end());
     int iter = 0;
     while (!(robot_x == 0 && robot_y == 0)){
@@ -265,7 +265,7 @@ void rwa2_group2::Robot::backtrack(){
     }
 }
 
-bool rwa2_group2::Robot::search_maze(std::string argument){
+bool rwa2_group1::Robot::search_maze(std::string argument){
     auto goal = generate_goal();
     std::array<int,3> curr_location = get_curr_loc();
     std::string left = "left";
@@ -300,7 +300,7 @@ bool rwa2_group2::Robot::search_maze(std::string argument){
     return true;  
 }
 
-bool rwa2_group2::Robot::move_robot(bool left_following = true){
+bool rwa2_group1::Robot::move_robot(bool left_following = true){
     auto curr_location = get_curr_loc();
     if (visited.capacity() > 0){
         for (int i = 0; i < visited.capacity();i++){
